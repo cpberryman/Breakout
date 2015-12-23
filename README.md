@@ -1,1 +1,1 @@
-A Java Swing application for playing the game breakout inspired by an assignment for Stanford University CS106a .
+A Java Swing application for playing the game "Breakout" inspired by an assignment for Stanford University CS106a .
