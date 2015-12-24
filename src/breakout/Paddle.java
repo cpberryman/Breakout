@@ -69,5 +69,14 @@ public class Paddle {
     public Color getColor() {
         return color;
     }
+    
+    /**
+     * Returns the x position of the paddle
+     *
+     * @return the x position
+     */
+    public int getX() {
+        return positionX;
+    }
 
 }
