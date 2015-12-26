@@ -27,10 +27,11 @@ public class Paddle {
     /**
      * Instance variables
      */
-    private Rectangle2D.Double rectangle;
-    private Color color;
+    private final Rectangle2D.Double rectangle;
+    private final Color color;
     private int positionX = PADDLE_START_POSITION_X;
-    private int positionY = ((Breakout.APPLICATION_HEIGHT - PADDLE_Y_OFFSET) - PADDLE_HEIGHT);
+    private final int positionY = ((Breakout.APPLICATION_HEIGHT
+            - PADDLE_Y_OFFSET) - PADDLE_HEIGHT);
 
     /**
      * Constructs a paddle
@@ -38,7 +39,8 @@ public class Paddle {
      * @param theColor the colour of the paddle
      */
     public Paddle(Color theColor) {
-        rectangle = new Rectangle2D.Double(positionX, positionY, PADDLE_WIDTH, PADDLE_HEIGHT);
+        rectangle = new Rectangle2D.Double(positionX, positionY,
+                PADDLE_WIDTH, PADDLE_HEIGHT);
         color = theColor;
     }
 
@@ -69,7 +71,7 @@ public class Paddle {
     public Color getColor() {
         return color;
     }
-    
+
     /**
      * Returns the x position of the paddle
      *
