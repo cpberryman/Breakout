@@ -3,6 +3,7 @@ package breakout;
 import java.awt.Graphics2D;
 
 /**
+ * This class draws a given brick
  *
  * @author ChrisBerryman
  */
@@ -13,6 +14,11 @@ public class BrickDrawer {
      */
     private Brick brick;
 
+    /**
+     * Constructs a brick drawer
+     *
+     * @param theBrick the brick to draw
+     */
     public BrickDrawer(Brick theBrick) {
         brick = theBrick;
     }
