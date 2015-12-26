@@ -77,7 +77,7 @@ public class BreakoutView implements Observer {
     }
 
     /**
-     * Returns the panel
+     * Returns the breakout panel
      *
      * @return the breakout panel
      */
