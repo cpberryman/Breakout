@@ -6,7 +6,8 @@ import java.util.Observable;
 import java.util.Random;
 
 /**
- *
+ * This class keeps track of the state of the components in the world
+ * 
  * @author ChrisBerryman
  */
 public class BreakoutModel extends Observable {
@@ -77,9 +78,6 @@ public class BreakoutModel extends Observable {
      * @param panelHeight the height of the bounding panel
      */
     public void moveBall(int panelWidth, int panelHeight) {
-
-        System.out.println("moveBall vy:" + vy);
-
         if (ball.getX() <= 0) {
             vx = Math.abs(vx);
         }
