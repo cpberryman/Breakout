@@ -78,6 +78,8 @@ public class BreakoutModel extends Observable {
      */
     public void moveBall(int panelWidth, int panelHeight) {
 
+        System.out.println("moveBall vy:" + vy);
+
         if (ball.getX() <= 0) {
             vx = Math.abs(vx);
         }
@@ -122,18 +124,24 @@ public class BreakoutModel extends Observable {
     public Brick checkForCollision() {
         Brick collider = null;
         for (Brick b : bricks) {
-            if (b.getRectangle().contains(ball.getX(), ball.getY()) || b.getRectangle().contains(ball.getX() + Ball.BALL_RADIUS * 2, ball.getY())) {
-                System.out.println("got here");
+            if (b.getRectangle().contains(ball.getX(), ball.getY())
+                    || b.getRectangle().contains(ball.getX()
+                            + Ball.BALL_RADIUS * 2, ball.getY())) {
                 vy = Math.abs(vy);
                 if (rgen.nextBoolean()) {
                     vx = -vx;
                 }
                 collider = b;
-            } else if (b.getRectangle().contains(ball.getX(), ball.getY() + Ball.BALL_RADIUS * 2) || b.getRectangle().contains(ball.getX() + Ball.BALL_RADIUS * 2, ball.getY() + Ball.BALL_RADIUS * 2)) {
+            }
+            if (b.getRectangle().contains(ball.getX(), ball.getY()
+                    + Ball.BALL_RADIUS * 2)
+                    || b.getRectangle().contains(ball.getX()
+                            + Ball.BALL_RADIUS * 2, ball.getY()
+                            + Ball.BALL_RADIUS * 2)) {
                 vy = -vy;
-               // if (rgen.nextBoolean()) {
-               //     vx = -vx;
-              //  }
+                if (rgen.nextBoolean()) {
+                    vx = -vx;
+                }
                 collider = b;
             }
         }
