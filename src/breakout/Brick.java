@@ -18,7 +18,9 @@ public class Brick {
     /**
      * Width of a brick
      */
-    public static final int BRICK_WIDTH = (Breakout.APPLICATION_WIDTH - (Breakout.NBRICKS_PER_ROW - 1) * BRICK_SEP) / Breakout.NBRICKS_PER_ROW;
+    public static final int BRICK_WIDTH = (Breakout.APPLICATION_WIDTH
+            - (Breakout.NBRICKS_PER_ROW - 1) * BRICK_SEP)
+            / Breakout.NBRICKS_PER_ROW;
 
     /**
      * Height of a brick
@@ -29,9 +31,10 @@ public class Brick {
      * Instance variables
      */
     private final Rectangle2D.Double rectangle;
-    private Color color;
-    private int positionX;
-    private int positionY;
+    private final Color color;
+    private final int positionX;
+    private final int positionY;
+    private BrickDrawer brickDrawer;
 
     /**
      * Constructs a brick
@@ -63,6 +66,24 @@ public class Brick {
      */
     public Color getColor() {
         return color;
+    }
+
+    /**
+     * Sets the brick drawer for the brick
+     *
+     * @param bd the brick drawer
+     */
+    public void setDrawer(BrickDrawer bd) {
+        brickDrawer = bd;
+    }
+
+    /**
+     * Returns the brick drawer of this brick
+     *
+     * @return the brick drawer
+     */
+    public BrickDrawer getDrawer() {
+        return brickDrawer;
     }
 
 }
