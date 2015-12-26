@@ -3,6 +3,7 @@ package breakout;
 import java.awt.geom.Ellipse2D;
 
 /**
+ * This class represents the ball
  *
  * @author ChrisBerryman
  */
@@ -51,7 +52,7 @@ public class Ball {
         ballLocationX += x;
         ballLocationY += y;
         circle.x = ballLocationX;
-        circle.y = ballLocationY;        
+        circle.y = ballLocationY;
     }
 
     /**
