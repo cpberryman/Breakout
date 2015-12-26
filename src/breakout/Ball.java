@@ -16,7 +16,7 @@ public class Ball {
     /**
      * Instance variables
      */
-    private Ellipse2D.Double circle;
+    private final Ellipse2D.Double circle;
     private double ballLocationX;
     private double ballLocationY;
 
@@ -27,7 +27,9 @@ public class Ball {
      * @param y the y position of the ball
      */
     public Ball(int x, int y) {
-        circle = new Ellipse2D.Double(x, y, BALL_RADIUS, BALL_RADIUS);
+        ballLocationX = x;
+        ballLocationY = y;
+        circle = new Ellipse2D.Double(ballLocationX, ballLocationY, BALL_RADIUS, BALL_RADIUS);
     }
 
     /**
@@ -49,7 +51,7 @@ public class Ball {
         ballLocationX += x;
         ballLocationY += y;
         circle.x = ballLocationX;
-        circle.y = ballLocationY;
+        circle.y = ballLocationY;        
     }
 
     /**
