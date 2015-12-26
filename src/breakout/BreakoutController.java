@@ -8,22 +8,25 @@ import javax.swing.AbstractAction;
 import javax.swing.Timer;
 
 /**
+ * This class sets up the world and the corresponding graphical objects in the
+ * view
  *
  * @author ChrisBerryman
  */
 public class BreakoutController {
-    
+
     /**
      * Instance variables
      */
     private BreakoutModel model;
     private BreakoutView view;
     private BreakoutMouseListener listener;
-    private Ball ball;    
+    private Ball ball;
     private Timer time;
 
     /**
      * Constructs a breakout controller
+     *
      * @param theModel the model for the game
      * @param theView the view for the game
      */
@@ -41,9 +44,9 @@ public class BreakoutController {
     public void init() {
         createAndShowBricks();
         createAndShowPaddle();
-        createAndShowBall();        
+        createAndShowBall();
     }
-    
+
     /**
      * Runs the game
      */
@@ -52,11 +55,17 @@ public class BreakoutController {
             @Override
             public void actionPerformed(ActionEvent e) {
                 model.moveBall(view.getPanel().getSize().width, view.getPanel().getSize().height);
+                Brick collidingObject = model.checkForCollision();
+                if (collidingObject != null) {
+                    BrickDrawer bd = collidingObject.getDrawer();
+                    view.removeBrickDrawer(bd);
+                    model.remove(collidingObject);
+                }
             }
         });
-        time.start();        
+        time.start();
     }
-    
+
     /**
      * Creates the bricks and adds them to the world
      */
@@ -72,7 +81,8 @@ public class BreakoutController {
             for (int j = 0; j < Breakout.NBRICKS_PER_ROW; j++) {
                 Brick b = new Brick(currentX, brickStartY, color);
                 BrickDrawer bd = new BrickDrawer(b);
-                view.addDrawable(bd);
+                b.setDrawer(bd);
+                view.addBrickDrawer(bd);
                 model.addBrick(b);
                 currentX += (Brick.BRICK_WIDTH + Brick.BRICK_SEP);
             }
@@ -84,6 +94,7 @@ public class BreakoutController {
 
     /**
      * Sets the colour of a row of bricks
+     *
      * @param rowIndex the index of the row
      * @return the colour
      */
@@ -116,12 +127,13 @@ public class BreakoutController {
 
     /**
      * Moves the paddle
+     *
      * @param x the x coordinate to move the paddle to
      */
     public void movePaddle(int x) {
         model.movePaddle(x);
     }
-    
+
     /**
      * Creates the ball and adds it to the world
      */
@@ -188,8 +200,8 @@ public class BreakoutController {
                 int x = e.getX();
                 if (x >= view.getPanel().getSize().width - Paddle.PADDLE_WIDTH) {
                     x = view.getPanel().getSize().width - Paddle.PADDLE_WIDTH;
-                } 
-                if(x <= 0) {
+                }
+                if (x <= 0) {
                     x = 0;
                 }
                 c.movePaddle(x);
